@@ -8,7 +8,7 @@
 
 1. Node >= 11.0.0
 1. WhatsApp account.
-1. Active tOKEN - Get a TOKEN [here](https://trenalyze.com).
+1. Active Token - Get a Token [here](https://trenalyze.com).
 
 
 ## Installation
@@ -30,7 +30,14 @@ const Trenalyze = require('trenalyze');
 // Set The Config
 const wa = new Trenalyze(YOUR_TRENALYZE_TOKEN_HERE, YOUR_WHATASPP_NUMBER_HERE, true);
 ```
+## API
 
+### new Trenalyze(token, sender, true)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| token | `string` | Use your Trenalyze Token from your [Dashboard](https://trenalyze.com) |
+| sender | `interger` | Enter the WhatApp Number that has already be scanned on the Trenalyze [Dashboard](https://trenalyze.com) |
 ```js
 // Set the Required Parameters for sending message 
 const details = {
