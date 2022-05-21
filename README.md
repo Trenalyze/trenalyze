@@ -42,8 +42,16 @@ const Trenalyze = require('trenalyze');
 const wa = new Trenalyze(YOUR_TRENALYZE_TOKEN_HERE, YOUR_WHATASPP_NUMBER_HERE, true);
 ```
 
-
 **Note:** Phone number should be in following format `12345678912`, without `+` or any other symbols
+
+### Initialize needed params in an array 
+
+| Param | Type | Description |
+| --- | --- | --- |
+| receiver | `interger` | Phone number should be in following format `12345678912`, without `+` or any other symbols. |
+| message | `interger` | Enter the desired text message to send. |
+| mediaurl | `string` | (OPTIONAL). This should be a valid media/file link. [Learn More](https://trenalyze.com) |
+|buttons | `array` | (OPTIONAL). You can attach quick replies buttons to your message. [Learn More](https://trenalyze.com) |
 ```js
 // Set the Required Parameters for sending message 
 const details = {
