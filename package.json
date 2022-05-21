@@ -1,0 +1,19 @@
+{
+    "name": "trenalyze",
+    "version": "0.0.2",
+    "description": "A WhatsApp Gateway for Sending Notifications",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Trenalyze/trenalyze.git"
+    },
+    "author": "Treasure Uvietobore",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Trenalyze/trenalyze/issues"
+    },
+    "homepage": "https://github.com/Trenalyze/trenalyze#readme"
+}
