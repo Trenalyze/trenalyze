@@ -22,7 +22,7 @@ $ npm i trenalyze
 
 In Node.js:
 
-**Note:** Phone number should be in following format `12345678912`, without `+` or any other symbols
+**Note:** You'll need to require the Trenalyze npm Module after installation
 
 ```js
 // Load the full build.
@@ -42,6 +42,8 @@ const Trenalyze = require('trenalyze');
 const wa = new Trenalyze(YOUR_TRENALYZE_TOKEN_HERE, YOUR_WHATASPP_NUMBER_HERE, true);
 ```
 
+
+**Note:** Phone number should be in following format `12345678912`, without `+` or any other symbols
 ```js
 // Set the Required Parameters for sending message 
 const details = {
