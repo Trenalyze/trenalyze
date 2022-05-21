@@ -4,6 +4,13 @@
 [Docs](https://github.com/Trenalyze/trenalyze#readme)
 
 
+## Library Prerequisites
+
+1. Node >= 11.0.0
+1. WhatsApp account.
+1. Active tOKEN - Get a TOKEN [here](https://trenalyze.com).
+
+
 ## Installation
 
 
@@ -11,19 +18,20 @@ Using npm:
 ```shell
 $ npm i trenalyze
 ```
-Note: add `--save` if you are using npm < 5.0.0
+**Note:** add `--save` if you are using npm < 5.0.0
 
 In Node.js:
+
+**Note:** Phone number should be in following format `12345678912`, without `+` or any other symbols
+
 ```js
 // Load the full build.
-const trenalyze = require('trenalyze');
-
+const Trenalyze = require('trenalyze');
 // Set The Config
-const config = {
-    token: process.env.TRENALYZE_TOKEN,
-    sender: process.env.TRENALYZE_SENDER
-}
+const wa = new Trenalyze(YOUR_TRENALYZE_TOKEN_HERE, YOUR_WHATASPP_NUMBER_HERE, true);
+```
 
+```js
 // Set the Required Parameters for sending message 
 const details = {
     receiver: '123456789',
@@ -36,17 +44,12 @@ const details = {
 }
 
 // Initialize the send whatsapp message functions
-trenalyze.sendMessage(config, details, (error, data) => {
+wa.sendMessage(details, (error, data) => {
     if (data.statusCode !== 200) {
-        res.status(500).send({
-            message: "Some error occurred while sending whatsapp Message"
-        });
+        console.log('Error: ' + data.statusMessage);
     } else {
-        res.status(201).json({
-            status: 'success',
-            wa_response: true
-        });
+        console.log('Success ' + data.statusMessage);
     }
-})
+});
 
 ```
