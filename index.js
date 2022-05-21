@@ -1,4 +1,3 @@
-//require('dotenv').config();
 const https = require('https');
 
 
@@ -17,7 +16,7 @@ class Trenalyze {
         }
     }
 
-    testSend(details) {
+    sendMessage(details, result) {
         return this._request('POST', {
             receiver: details.receiver,
             msgtext: details.message,
@@ -26,63 +25,13 @@ class Trenalyze {
             appurl: this.setconfig().appurl,
             mediaurl: details.mediaurl,
             buttons: details.buttons
-        });
-    }
-
-    sendMessage(details, result) {
-        const data = JSON.stringify({
-            receiver: details.receiver,
-            msgtext: details.message,
-            sender: this.sender,
-            token: this.token,
-            appurl: this.setconfig().appurl,
-            mediaurl: details.mediaurl,
-            buttons: details.buttons
-        });
-
-        const options = {
-            hostname: 'api.trenalyze.com',
-            port: 443,
-            path: '/send',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Content-Length': data.length
-            }
-        }
-
-        const req = https.request(options, res => {
-            console.log(`
-                    statusCode: $ { res.statusCode }
-                    `);
-
-            // console.log('headers:', res.headers);
-            res.on('data', d => {
-
-                process.stdout.write(d);
-                result(null, res);
-                return;
-
-            })
-        })
-
-        req.on('error', error => {
-            console.error(error);
-            const info = {
-
-            }
-            result(null, error);
+        }, (error, data) => {
+            result(null, data);
             return;
-        })
-
-        req.write(data);
-        req.end();
-
-        /* private */
-
+        });
     }
 
-    _request(method, data) {
+    _request(method, data, result) {
         const options = {
             'method': method,
             'hostname': this.hostname,
@@ -98,7 +47,8 @@ class Trenalyze {
 
                 res.on("data", (chunk) => {
                     chunks.push(chunk);
-                    process.stdout.write(chunk);
+                    result(null, res);
+                    return;
                 });
 
                 res.on("end", () => {
