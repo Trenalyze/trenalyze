@@ -27,8 +27,6 @@ In Node.js:
 ```js
 // Load the full build.
 const Trenalyze = require('trenalyze');
-// Set The Config
-const wa = new Trenalyze(YOUR_TRENALYZE_TOKEN_HERE, YOUR_WHATASPP_NUMBER_HERE, true);
 ```
 ## API
 
@@ -39,6 +37,11 @@ const wa = new Trenalyze(YOUR_TRENALYZE_TOKEN_HERE, YOUR_WHATASPP_NUMBER_HERE, t
 | token | `string` | Use your Trenalyze Token from your [Dashboard](https://trenalyze.com). |
 | sender | `interger` | Enter the WhatApp Number that has already be scanned on the Trenalyze [Dashboard](https://trenalyze.com). |
 | debug | `boolean` | (OPTIONAL). Default is false. But you can set to be true and the debug message is passed onto the console. |
+```js
+// Set The Config
+const wa = new Trenalyze(YOUR_TRENALYZE_TOKEN_HERE, YOUR_WHATASPP_NUMBER_HERE, true);
+```
+
 ```js
 // Set the Required Parameters for sending message 
 const details = {
