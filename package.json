@@ -15,5 +15,8 @@
     "bugs": {
         "url": "https://github.com/Trenalyze/trenalyze/issues"
     },
-    "homepage": "https://github.com/Trenalyze/trenalyze#readme"
+    "homepage": "https://github.com/Trenalyze/trenalyze#readme",
+    "dependencies": {
+        "validator": "^13.7.0"
+    }
 }
