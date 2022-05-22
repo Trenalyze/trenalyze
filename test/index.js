@@ -23,5 +23,5 @@ wa.sendMessage(details, (error, data) => {
         console.log('Success ' + data.statusMessage);
     }
 });
-console.log('All Test Completed');
-process.exit(0);
+// console.log('All Test Completed');
+// process.exit(0);
