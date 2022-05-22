@@ -5,7 +5,7 @@ const sender = '2347019491161';
 
 const details = {
     receiver: '2348157002782',
-    message: 'Hello Treasure',
+    message: 'Hello Treasure, Dependabot was successful',
     mediaurl: '',
     buttons: [{
         text: 'Click Me',
