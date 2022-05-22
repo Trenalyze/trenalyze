@@ -31,6 +31,19 @@ const verifyParams = (token, sender, message, receiver) => {
     }
 }
 
+const verifyMediaUrl = (mediaurl) => {
+    const errors = {};
+    if (!(validator.isURL(mediaurl))) {
+        errors['mediaurl'] = 'Please use a valid URL.';
+    }
+
+    return {
+        errors,
+        valid: Object.keys(errors).length < 1
+    }
+}
+
 module.exports = {
-    verifyParams
+    verifyParams,
+    verifyMediaUrl
 }
