@@ -1,7 +1,7 @@
 {
     "name": "trenalyze",
-    "version": "0.0.2",
-    "description": "A WhatsApp Gateway for Sending Notifications",
+    "version": "0.0.4",
+    "description": "A whatsApp API for sending whatsapp Messages with your own custom phone number",
     "main": "src/index.js",
     "scripts": {
         "test": "node test/index.js"
@@ -16,7 +16,20 @@
         "url": "https://github.com/Trenalyze/trenalyze/issues"
     },
     "homepage": "https://github.com/Trenalyze/trenalyze#readme",
-    "dependencies": {
+    "devDependencies": {
         "validator": "^13.7.0"
-    }
+    },
+    "keywords": [
+        "whatsapp",
+        "chatbot",
+        "bot",
+        "automessage",
+        "message",
+        "notifications",
+        "alerts",
+        "facebook",
+        "robot",
+        "auto response"
+    ]
+}]
 }
