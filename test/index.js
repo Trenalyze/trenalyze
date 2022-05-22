@@ -1,6 +1,6 @@
 const Trenalyze = require('trenalyze');
 
-require('dotenv').config();
+
 
 const token = 'w0bW6GuaQjKUog5GXOJb';
 const sender = '2347019491161';
