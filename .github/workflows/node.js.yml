@@ -30,4 +30,4 @@ jobs:
     - run: npm intall dotenv
     - run: npm install trenalyze
     - run: npm run build --if-present
-    - run: npm test
+    - run: npm run test
