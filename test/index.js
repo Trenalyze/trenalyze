@@ -1,7 +1,5 @@
 const Trenalyze = require('trenalyze');
 
-
-
 const token = 'w0bW6GuaQjKUog5GXOJb';
 const sender = '2347019491161';
 
@@ -23,5 +21,3 @@ wa.sendMessage(details, (error, data) => {
         console.log('Success ' + data.statusMessage);
     }
 });
-// console.log('All Test Completed');
-// process.exit(0);
