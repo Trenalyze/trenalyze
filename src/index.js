@@ -29,19 +29,46 @@ class Trenalyze {
         }
     }
 
-    /* It's a function that sends a message to a user on Trenalyze.com. */
+    /**
+     * It sends a message to a user
+     * @param details - {
+     * @param result - The callback function that will be called when the request is complete.
+     * @returns The result of the function is being returned.
+     */
     sendMessage(details, result) {
+        /* It's destructuring the object returned by the verifyParams() function. */
         const { errors, valid } = verifyParams(
+
+            /* It's calling the setconfig() function and returning the hostname property of the object
+            returned by the setconfig() function. */
             this.setconfig().hostname,
+
+            /* It's calling the setconfig() function and returning the appurl property of the object
+            returned by the setconfig() function. */
             this.setconfig().appurl,
+
+            /* It's calling the token and sender properties of the Trenalyze class. */
             this.token, this.sender,
+
+            /* It's calling the message property of the details object. */
             details.message,
+
+            /* It's calling the receiver property of the details object. */
             details.receiver
         );
 
+        /* It's checking if the value of the valid variable is false. If it is, it's logging the errors
+        to the console and returning the result of the function. */
         if (!valid) {
+
+            /* It's checking if the value of the debug property of the Trenalyze class is true. If it
+            is, it's logging the errors to the console. */
             if (this.debug) console.log(errors);
+
+            /* It's creating an object with two properties: statusCode and statusMessage. */
             const info = {
+
+                /* It's creating an object with two properties: statusCode and statusMessage. */
                 statusCode: 400,
                 statusMessage: 'Bad Request'
             }
