@@ -1,8 +1,13 @@
 /* Importing the validator module. */
 const validator = require('validator');
 
-const verifyParams = (sender, message, receiver) => {
+const verifyParams = (token, sender, message, receiver) => {
     const errors = {};
+    if (validator.isEmpty(token)) {
+        errors.token = 'A valid Trenalyze Token is required';
+    } else if (!(validator.isLength(token, { min: 20, max: 20 }))) {
+        errors.token = 'Please use a valid Trenalyze Token';
+    }
 
     if (validator.isEmpty(sender)) {
         errors['sender'] = 'Sender is required.';
