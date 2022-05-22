@@ -30,7 +30,7 @@ const Trenalyze = require('trenalyze');
 ```
 ## API
 
-### new Trenalyze(token, sender, true)
+### 1. new Trenalyze(token, sender, true)
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -44,7 +44,7 @@ const wa = new Trenalyze(YOUR_TRENALYZE_TOKEN_HERE, YOUR_WHATASPP_NUMBER_HERE, t
 
 **Note:** Phone number should be in following format `12345678912`, without `+` or any other symbols
 
-### Initialize needed params in an array 
+### 2. Initialize needed params in an array 
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -70,8 +70,13 @@ mediaurl: '',
 buttons: ''
 ```
 
-```js
+### 3. Initialize SendMessage
 
+| Param | Type | Description |
+| --- | --- | --- |
+| details | `variable` | Send the variable declared in step **2** |
+
+```js
 // Initialize the send whatsapp message functions
 wa.sendMessage(details, (error, data) => {
     if (data.statusCode !== 200) {
