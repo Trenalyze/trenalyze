@@ -36,38 +36,19 @@ class Trenalyze {
      * @returns The result of the function is being returned.
      */
     sendMessage(details, result) {
-        /* It's destructuring the object returned by the verifyParams() function. */
-        const { errors, valid } = verifyParams(
 
-            /* It's calling the setconfig() function and returning the hostname property of the object
-            returned by the setconfig() function. */
-            this.setconfig().hostname,
+        /* It's destructuring the details object. */
+        const { receiver, message, mediaurl, buttons } = details;
 
-            /* It's calling the setconfig() function and returning the appurl property of the object
-            returned by the setconfig() function. */
-            this.setconfig().appurl,
-
-            /* It's calling the token and sender properties of the Trenalyze class. */
-            this.token, this.sender,
-
-            /* It's calling the message property of the details object. */
-            details.message,
-
-            /* It's calling the receiver property of the details object. */
-            details.receiver
-        );
-
-        /* It's checking if the value of the valid variable is false. If it is, it's logging the errors
-        to the console and returning the result of the function. */
-        if (!valid) {
+        /* It's checking if the value of the receiver, message, mediaurl, and buttons variables are
+        false. */
+        if (!(receiver && message && buttons)) {
 
             /* It's checking if the value of the debug property of the Trenalyze class is true. If it
-            is, it's logging the errors to the console. */
-            if (this.debug) console.log(errors);
-
-            /* It's creating an object with two properties: statusCode and statusMessage. */
+            is, it's logging the string 'Error: Missing parameters. Please Refer to documentation'
+            to the console. */
+            if (this.debug) console.log('Missing parameters. Please Refer to documentation');
             const info = {
-
                 /* It's creating an object with two properties: statusCode and statusMessage. */
                 statusCode: 400,
                 statusMessage: 'Bad Request'
@@ -75,83 +56,124 @@ class Trenalyze {
 
             /* It's calling the result function and passing null and info as arguments. */
             result(null, info);
-
-            /* It's returning the result of the function. */
-            return;
         } else {
-            /* It's checking if the value of the mediaurl property of the details object is not an empty
-            string. */
-            if (details.mediaurl !== '') {
+            /* It's destructuring the object returned by the verifyParams() function. */
+            const { errors, valid } = verifyParams(
 
-                /* It's destructuring the object returned by the verifyMediaUrl() function. */
-                const { errors, valid } = verifyMediaUrl(details.mediaurl);
+                /* It's calling the setconfig() function and returning the hostname property of the object
+                returned by the setconfig() function. */
+                this.setconfig().hostname,
 
-                /* It's checking if the value of the valid variable is false. If it is, it's logging the
-                errors to the console and returning the result of the function. */
-                if (!valid) {
+                /* It's calling the setconfig() function and returning the appurl property of the object
+                returned by the setconfig() function. */
+                this.setconfig().appurl,
 
-                    /* It's checking if the value of the debug property of the Trenalyze class is true.
-                    If it is, it's logging the errors to the console. */
-                    if (this.debug) console.log(errors);
+                /* It's calling the token and sender properties of the Trenalyze class. */
+                this.token, this.sender,
+
+                /* It's calling the message property of the details object. */
+                details.message,
+
+                /* It's calling the receiver property of the details object. */
+                details.receiver
+            );
+
+            /* It's checking if the value of the valid variable is false. If it is, it's logging the errors
+            to the console and returning the result of the function. */
+            if (!valid) {
+
+                /* It's checking if the value of the debug property of the Trenalyze class is true. If it
+                is, it's logging the errors to the console. */
+                if (this.debug) console.log(errors);
+
+                /* It's creating an object with two properties: statusCode and statusMessage. */
+                const info = {
 
                     /* It's creating an object with two properties: statusCode and statusMessage. */
-                    const info = {
-                        statusCode: 400,
-                        statusMessage: 'Bad Request'
-                    }
-
-                    /* It's calling the result function and passing null and info as arguments. */
-                    result(null, info);
-
-                    /* It's returning the result of the function. */
-                    return;
+                    statusCode: 400,
+                    statusMessage: 'Bad Request'
                 }
+
+                /* It's calling the result function and passing null and info as arguments. */
+                result(null, info);
+
+                /* It's returning the result of the function. */
+                return;
+            } else {
+                /* It's checking if the value of the mediaurl property of the details object is not an empty
+                string. */
+                if (details.mediaurl !== '') {
+
+                    /* It's destructuring the object returned by the verifyMediaUrl() function. */
+                    const { errors, valid } = verifyMediaUrl(details.mediaurl);
+
+                    /* It's checking if the value of the valid variable is false. If it is, it's logging the
+                    errors to the console and returning the result of the function. */
+                    if (!valid) {
+
+                        /* It's checking if the value of the debug property of the Trenalyze class is true.
+                        If it is, it's logging the errors to the console. */
+                        if (this.debug) console.log(errors);
+
+                        /* It's creating an object with two properties: statusCode and statusMessage. */
+                        const info = {
+                            statusCode: 400,
+                            statusMessage: 'Bad Request'
+                        }
+
+                        /* It's calling the result function and passing null and info as arguments. */
+                        result(null, info);
+
+                        /* It's returning the result of the function. */
+                        return;
+                    }
+                }
+
+                /* It's calling the _request() function and passing 'POST', an object with five properties,
+                and a function as arguments. */
+                return this._request('POST', {
+                        /* It's calling the receiver property of the details object and assigning it to the
+                        receiver
+                        property of the object passed as the second argument to the _request() function. */
+                        receiver: details.receiver,
+
+                        /* It's assigning the value of the message property of the details object to the
+                        msgtext property of the object passed as the second argument to the _request()
+                        function. */
+                        msgtext: details.message,
+
+                        /* It's assigning the value of the sender property of the Trenalyze class to the sender
+                        property of the object passed as the second argument to the _request() function. */
+                        sender: this.sender,
+
+                        /* It's assigning the value of the token property of the Trenalyze class to the token
+                        property of the object passed as the second argument to the _request() function. */
+                        token: this.token,
+
+                        /* It's calling the setconfig() function and returning the appurl property of the object
+                        returned by the setconfig() function. */
+                        appurl: this.setconfig().appurl,
+
+                        /* It's assigning the value of the mediaurl property of the details object to the
+                        mediaurl property of the object passed as the second argument to the _request()
+                        function. */
+                        mediaurl: details.mediaurl,
+
+                        /* It's assigning the value of the buttons property of the details object to the
+                        buttons property of the object passed as the second argument to the _request()
+                        function. */
+                        buttons: details.buttons
+
+                    },
+                    /* It's a function that is being passed as an argument to the _request() function. */
+                    (error, data) => {
+                        /* It's calling the result function and passing null and data as arguments. */
+                        result(null, data);
+
+                        /* It's returning the result of the function. */
+                        return;
+                    });
             }
-
-            /* It's calling the _request() function and passing 'POST', an object with five properties,
-            and a function as arguments. */
-            return this._request('POST', {
-                    /* It's calling the receiver property of the details object and assigning it to the
-                    receiver
-                    property of the object passed as the second argument to the _request() function. */
-                    receiver: details.receiver,
-
-                    /* It's assigning the value of the message property of the details object to the
-                    msgtext property of the object passed as the second argument to the _request()
-                    function. */
-                    msgtext: details.message,
-
-                    /* It's assigning the value of the sender property of the Trenalyze class to the sender
-                    property of the object passed as the second argument to the _request() function. */
-                    sender: this.sender,
-
-                    /* It's assigning the value of the token property of the Trenalyze class to the token
-                    property of the object passed as the second argument to the _request() function. */
-                    token: this.token,
-
-                    /* It's calling the setconfig() function and returning the appurl property of the object
-                    returned by the setconfig() function. */
-                    appurl: this.setconfig().appurl,
-
-                    /* It's assigning the value of the mediaurl property of the details object to the
-                    mediaurl property of the object passed as the second argument to the _request()
-                    function. */
-                    mediaurl: details.mediaurl,
-
-                    /* It's assigning the value of the buttons property of the details object to the
-                    buttons property of the object passed as the second argument to the _request()
-                    function. */
-                    buttons: details.buttons
-
-                },
-                /* It's a function that is being passed as an argument to the _request() function. */
-                (error, data) => {
-                    /* It's calling the result function and passing null and data as arguments. */
-                    result(null, data);
-
-                    /* It's returning the result of the function. */
-                    return;
-                });
         }
     }
 
