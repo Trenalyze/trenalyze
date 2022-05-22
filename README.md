@@ -6,7 +6,7 @@
 
 ## Library Prerequisites
 
-1. Node >= 11.0.0
+1. Node >= 12x
 1. WhatsApp account.
 1. Active Token - Get a Token [here](https://trenalyze.com).
 
@@ -50,8 +50,8 @@ const wa = new Trenalyze(YOUR_TRENALYZE_TOKEN_HERE, YOUR_WHATASPP_NUMBER_HERE, t
 | --- | --- | --- |
 | receiver | `interger` | Phone number should be in following format `12345678912`, without `+` or any other symbols. |
 | message | `interger` | Enter the desired text message to send. |
-| mediaurl | `string` | (OPTIONAL). This should be a valid media/file link. [Learn More](https://trenalyze.com) |
-|buttons | `array` | (OPTIONAL). You can attach quick replies buttons to your message. [Learn More](https://trenalyze.com) |
+| mediaurl | `string` | (OPTIONAL). **BUT MUST BE DECLARED** This should be a valid media/file link. [Learn More](https://trenalyze.com) |
+| buttons | `array` | (OPTIONAL). **BUT MUST BE DECLARED** You can attach quick replies buttons to your message. [Learn More](https://trenalyze.com) |
 ```js
 // Set the Required Parameters for sending message 
 const details = {
@@ -63,6 +63,14 @@ const details = {
         url: 'https://trenalyze.com'
     }]
 }
+```
+**NOTE:** When not using **mediaurl** and **buttons** set to **NULL**
+```js
+mediaurl: '',
+buttons: ''
+```
+
+```js
 
 // Initialize the send whatsapp message functions
 wa.sendMessage(details, (error, data) => {
