@@ -1,8 +1,7 @@
 /* It's a Node.js module that allows you to make HTTPS requests. */
 const https = require('https');
 
-const { verifyParams } = require('../utils/validator');
-
+const { verifyParams, verifyMediaUrl } = require('../utils/validator');
 
 /* It's a class that sends messages to a user on Trenalyze.com. */
 class Trenalyze {
@@ -32,7 +31,14 @@ class Trenalyze {
 
     /* It's a function that sends a message to a user on Trenalyze.com. */
     sendMessage(details, result) {
-        const { errors, valid } = verifyParams(this.token, this.sender, details.message, details.receiver);
+        const { errors, valid } = verifyParams(
+            this.setconfig().hostname,
+            this.setconfig().appurl,
+            this.token, this.sender,
+            details.message,
+            details.receiver
+        );
+
         if (!valid) {
             if (this.debug) console.log(errors);
             const info = {
@@ -42,6 +48,19 @@ class Trenalyze {
             result(null, info);
             return;
         } else {
+            if (details.mediaurl !== '') {
+                const { errors, valid } = verifyMediaUrl(details.mediaurl);
+                if (!valid) {
+                    if (this.debug) console.log(errors);
+                    const info = {
+                        statusCode: 400,
+                        statusMessage: 'Bad Request'
+                    }
+                    result(null, info);
+                    return;
+                }
+            }
+
             return this._request('POST', {
                 receiver: details.receiver,
                 msgtext: details.message,
