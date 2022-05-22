@@ -74,7 +74,7 @@ buttons: ''
 
 | Param | Type | Description |
 | --- | --- | --- |
-| details | `variable` | Send the variable declared in step **2** |
+| details | `array(variable)` | Send the variable declared in step **2** |
 
 ```js
 // Initialize the send whatsapp message functions
