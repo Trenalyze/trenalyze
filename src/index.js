@@ -59,7 +59,6 @@ class Trenalyze {
         } else {
             /* It's destructuring the object returned by the verifyParams() function. */
             const { errors, valid } = verifyParams(
-
                 /* It's calling the setconfig() function and returning the hostname property of the object
                 returned by the setconfig() function. */
                 this.setconfig().hostname,
