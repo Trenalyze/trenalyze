@@ -11,7 +11,7 @@ const validator = require('validator');
  * @param receiver - The phone number of the person you want to send the message to.
  * @returns An object with two properties: errors and valid.
  */
-const verifyParams = (hostname, appurl, token, sender, message, receiver) => {
+const verifyParams = (hostname, token, sender, message, receiver) => {
     /* Creating an empty object. */
     const errors = {};
 
@@ -27,24 +27,8 @@ const verifyParams = (hostname, appurl, token, sender, message, receiver) => {
 
     /* Checking if the hostname is equal to api.trenalyze.com. If it is not, it will add an error to
        the errors object. */
-    else if (!(validator.equals(hostname, 'api.trenalyze.com'))) {
+    else if (!(validator.equals(hostname, 'trenalyze.com'))) {
         errors['hostname'] = 'Please hostname cannot be changed.';
-    }
-
-    /* Checking if the appurl is empty. If it is empty, it will add an error to the errors object. */
-    if (validator.isEmpty(appurl)) {
-        errors['appurl'] = 'Please appurl is required. Please do not edit it.';
-    }
-
-    /* Checking if the appurl is a valid URL. */
-    else if (!(validator.isURL(appurl))) {
-        errors['appurl'] = 'Please appurl must be a url.';
-    }
-
-    /* Checking if the appurl is equal to https://trenalyze.com. If it is not, it will add an error
-       to the errors object. */
-    else if (!(validator.equals(appurl, 'https://trenalyze.com'))) {
-        errors['appurl'] = 'Please appurl cannot be changed.';
     }
 
     /* Checking if the token is empty. If it is empty, it will add an error to the errors object. */
