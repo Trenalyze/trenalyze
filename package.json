@@ -1,6 +1,6 @@
 {
     "name": "trenalyze",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "A whatsApp API for sending whatsapp Messages with your own custom phone number",
     "main": "src/index.js",
     "scripts": {
