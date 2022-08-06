@@ -24,8 +24,7 @@ class Trenalyze {
      */
     setconfig() {
         return {
-            hostname: 'api.trenalyze.com',
-            appurl: 'https://trenalyze.com'
+            hostname: 'trenalyze.com',
         }
     }
 
@@ -62,10 +61,6 @@ class Trenalyze {
                 /* It's calling the setconfig() function and returning the hostname property of the object
                 returned by the setconfig() function. */
                 this.setconfig().hostname,
-
-                /* It's calling the setconfig() function and returning the appurl property of the object
-                returned by the setconfig() function. */
-                this.setconfig().appurl,
 
                 /* It's calling the token and sender properties of the Trenalyze class. */
                 this.token, this.sender,
@@ -149,10 +144,6 @@ class Trenalyze {
                         property of the object passed as the second argument to the _request() function. */
                         token: this.token,
 
-                        /* It's calling the setconfig() function and returning the appurl property of the object
-                        returned by the setconfig() function. */
-                        appurl: this.setconfig().appurl,
-
                         /* It's assigning the value of the mediaurl property of the details object to the
                         mediaurl property of the object passed as the second argument to the _request()
                         function. */
@@ -200,7 +191,7 @@ class Trenalyze {
             'port': 443,
 
             /* It's setting the path to /send. */
-            'path': '/send',
+            'path': '/public/api/send',
 
             /* It's setting the Content-Type header to application/json. */
             'headers': {
